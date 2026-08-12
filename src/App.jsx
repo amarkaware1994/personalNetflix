@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import NavBar from './components/navBar'
+import SearchBar from './components/search-bar/searchBar'
+import TrendinVideo from './components/tending-video/TrendinVideo'
+
 
 function App() {
 
 
   return (
     <>
-      <div >
-        <h1>Vite + React</h1>
-        </div>
+      <NavBar />
+      <SearchBar />
+      <TrendinVideo />
     </>
   )
 }

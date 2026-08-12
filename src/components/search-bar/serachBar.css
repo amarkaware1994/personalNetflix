@@ -1,0 +1,6 @@
+
+@reference "tailwindcss";
+
+.search-bar{
+    @apply h-[50px] px-10 py-2 border-b border-gray-200 border;
+}
