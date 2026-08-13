@@ -1,7 +1,8 @@
 import './App.css'
 import NavBar from './components/navBar'
 import SearchBar from './components/search-bar/searchBar'
-import TrendinVideo from './components/tending-video/TrendinVideo'
+import TrendinMovies from './components/tending-video/TrendinVideo';
+import { Outlet } from "react-router-dom";
 
 
 function App() {
@@ -9,9 +10,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <SearchBar />
-      <TrendinVideo />
+      <TrendinMovies/>
     </>
   )
 }

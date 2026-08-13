@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { formatDate } from "../../utils/Format.jsx";
 
 const MovieCard = ({ movie }) => {
   return (
@@ -6,35 +8,32 @@ const MovieCard = ({ movie }) => {
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}                                
-        className="h-96 w-full object-cover"
+        className="poster w-full block"
       />
 
       <div className="p-2">
-        <div className="min-h-[56px] flex justify-between items-start gap-3">
-          <h2 className="text-xl font-bold leading-snug">
-            {movie.title.length > 30 ? movie.title.substring(0, 30) + '...' : movie.title}
+        <div className=" flex justify-between items-start ">
+          <h2 className="text-lg font-bold leading-snug">
+            {movie.title.length > 20 ? movie.title.substring(0, 19) + '...' : movie.title}
          </h2>
-
-          <span className="hrink-0 rounded bg-yellow-400 px-2 py-1 text-black">
-            ⭐ {movie.vote_average.toFixed(1)}
-          </span>
-           
         </div>
 
-        <p className="mt-3 min-h-[102px] text-sm text-gray-300">
+        {/* <p className="mt-3 min-h-25.5 text-sm text-gray-300">
          {movie.overview.length > 100 ? movie.overview.substring(0, 100) + '...' : movie.overview}
-        </p>
+        </p> */}
 
         <div className="mt-4 flex items-center justify-between">
           <span className="rounded bg-blue-600 px-3 py-1 text-sm">
-            Sci-Fi
+            ⭐ {movie.vote_average.toFixed(1)}
           </span>
 
-          <span className="text-gray-400">2010</span>
+          <span className="text-gray-400">{formatDate(movie.release_date) }</span>
         </div>
 
         <button className="mt-5 w-full rounded-lg bg-red-600 py-2 font-semibold transition hover:bg-red-700">
-          Watch Trailer
+             <NavLink to={`${movie.id}`} end>
+                Watch Details
+            </NavLink>
         </button>
       </div>
     </div>
