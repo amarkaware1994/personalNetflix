@@ -1,8 +1,18 @@
 import React from 'react'
 import { Link ,NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = React.useState('');
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && searchText.trim() !== "") {
+      navigate(
+        `/personalNetflix/search?query=${encodeURIComponent(searchText)}`
+      );
+    }
+  };
   return (
     <header className="sticky top-0 z-50 bg-[#141414] border-b border-gray-800 shadow-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
@@ -20,6 +30,9 @@ function NavBar() {
 
           <input
             type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)} 
+            onKeyDown={handleSearch}
             placeholder="Search movies..."
             className="w-full rounded-full border border-gray-700 bg-[#1f1f1f] py-2.5 pl-11 pr-4 text-white placeholder-gray-400 outline-none transition focus:border-[#E50914] focus:ring-1 focus:ring-[#E50914]"
           />
@@ -33,7 +46,7 @@ function NavBar() {
             className={({ isActive }) =>
               isActive
                 ? "text-white font-semibold"
-                : "text-gray-300 hover:text-white"
+                : "text-blue-600 hover:text-white"
             }
           >Home</NavLink>
 
@@ -42,7 +55,7 @@ function NavBar() {
             className={({ isActive }) =>
               isActive
                 ? "text-white font-semibold"
-                : "text-gray-300 hover:text-white"
+                : "text-blue-600 hover:text-white"
             }
           >Top Rated Movies</NavLink>
           {/* <Link

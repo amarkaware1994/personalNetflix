@@ -4,6 +4,7 @@ import App from './App.jsx'
 import MovieDetails from './components/pages/movie-details.jsx'
 import TopRatedMovies from './components/tending-video/TopratedMovies.jsx'
 import Layout from './Layout.jsx';
+import SearchMovies from './components/tending-video/SearchMovies.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,23 @@ export const router = createBrowserRouter([
       {
         path: `:id`,
         element: <MovieDetails />,      
-      }
+      },
+      {
+        path: `:id`,
+        element: <MovieDetails />,      
+      },
+      {
+        path: `top-rated/:id`,
+        element: <MovieDetails />,      
+      },
+      {
+        path: "search",
+        element: <SearchMovies />,
+      },
+       {
+        path: `search/:id`,
+        element: <MovieDetails />,      
+      },
     ]
 
   },
